@@ -1,50 +1,62 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+// import TripList from './components/TripList.vue'
 </script>
 
 <template>
   <header>
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    
   </header>
 
   <main>
-    <TheWelcome />
+    <TripList :trips="tripsData"/>
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+<script>
+import TripList from './components/TripList.vue';
+export default {
+  components: {
+    TripList
+  },
+  data() {
+    return {
+      tripsData: [
+        {
+          id: 1,
+          startTime: '12:34',
+          startDate: '28/06/2024',
+          startAddress: 'Avenida Las Tranqueras 1571, 7630000 Vitacura, Región Metropolitana de Santiago, Chile',
+          endTime: '12:52',
+          endDate: '28/06/2024',
+          endAddress: 'Calle Miraflores 222, 8320000 Santiago, Región Metropolitana de Santiago, Chile',
+          distance: 12.16,
+          duration: 18
+        },
+        {
+          id: 2,
+          startTime: '07:13',
+          startDate: '27/06/2024',
+          startAddress: 'Avenida El Peral, 8150000 Puente Alto, Región Metropolitana de Santiago, Chile',
+          endTime: '07:38',
+          endDate: '27/06/2024',
+          endAddress: 'Pasaje Loma Alta 1 3611, 8150000 Puente Alto, Región Metropolitana de Santiago, Chile',
+          distance: 10.26,
+          duration: 24
+        },
+        {
+          id: 3,
+          startTime: '20:54',
+          startDate: '26/06/2024',
+          startAddress: 'Avenida El Peñón 02051, 8150000 Puente Alto, Región Metropolitana de Santiago, Chile',
+          endTime: '21:03',
+          endDate: '26/06/2024',
+          endAddress: 'Pasaje Loma Alta 1 3611, 8150000 Puente Alto, Región Metropolitana de Santiago, Chile',
+          distance: 3.38,
+          duration: 9
+        }
+      ]
+    };
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 }
-</style>
+</script>
