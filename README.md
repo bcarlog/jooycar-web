@@ -1,41 +1,68 @@
-# my-project
+# Jooycar Web Application
+Esta es la aplicación web de Jooycar. A continuación se detallan los pasos para ejecutar la aplicación usando Docker y también cómo ejecutarla localmente.
 
-This template should help get you started developing with Vue 3 in Vite.
+Nota: Para que la aplicación web funcione correctamente, asegúrate de que la API de Jooycar esté ejecutándose primero.
 
-## Recommended IDE Setup
+## Requisitos
+ * Docker
+ * Node.js (mínimo versión 18)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Ejecución usando Docker
 
-## Customize configuration
+### 1. Construir la imagen Docker
+Construye la imagen Docker.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+```bash
+docker build -t jooycar-web .
+```
+ * -t jooycar-web: Etiqueta la imagen como jooycar-web.
 
-## Project Setup
+### 2. Ejecutar la aplicación en Docker
+Ejecuta ka aplicación Vue.js en un contenedor Docker.
 
-```sh
+```bash
+docker run -it -p 8080:8080 --rm --name jooycar-web jooycar-web
+```
+
+ * -it: Ejecuta el contenedor en modo interactivo.
+ * -p 8080:8080: Mapea el puerto 8080 del contenedor al puerto 8080 de tu máquina host.
+ * --rm: Elimina el contenedor automáticamente cuando se detiene.
+ * --name jooycar-web: Asigna el nombre jooycar-web al contenedor.
+
+Ahora deberías poder acceder a tu aplicación web en http://localhost:8080.
+
+## Ejecución local
+
+### 1. Requisitos previos
+Asegúrate de tener Node.js (mínimo versión 18) instalado en tu máquina.
+
+### 2. Clonar el repositorio
+Clona este repositorio en tu máquina local.
+
+```bash
+git clone https://github.com/tu-usuario/jooycar-web.git
+cd jooycar-web
+```
+
+### 3. Instalar dependencias
+Instala las dependencias del proyecto.
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 4. Ejecutar la API de Jooycar
+Asegúrate de que la API de Jooycar esté ejecutándose. Sigue las instrucciones en el repositorio de la API para ejecutar la API localmente o en un contenedor Docker.
 
-```sh
+### 5. Ejecutar la aplicación
+Para ejecutar la aplicación en modo desarrollo:
+
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+Para ejecutar las pruebas unitarias:
 
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
+```bash
 npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
