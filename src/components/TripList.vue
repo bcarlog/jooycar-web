@@ -1,26 +1,3 @@
-<script setup>
-import moment from 'moment'
-defineProps({
-  trips: {
-    type: Array,
-    required: true
-  }
-})
-
-const formatDate = (timestamp) => {
-  return moment(timestamp).format('HH:mm - DD/MM/YYYY')
-}
-
-const fixPoints = (km) => {
-  return km.toFixed(2)
-}
-
-const convertMillsToMin = (milliseconds) => {
-  return (milliseconds / 60000).toFixed(1);
-};
-
-</script>
-
 <template>
   <table class="min-w-full border border-gray-200">
       <thead>
@@ -44,7 +21,41 @@ const convertMillsToMin = (milliseconds) => {
             <p>{{ fixPoints(trip.distance) }} kms</p>
             <p>{{ convertMillsToMin(trip.duration) }} minutos</p>
           </td>
+          <td class="p-2 font-medium text-blue-600 cursor-pointer" @click="openMap(trip)">
+            Map
+          </td>
         </tr>
       </tbody>
     </table>
 </template>
+
+<script setup>
+import moment from 'moment'
+const props = defineProps({
+  trips: {
+    type: Array,
+    required: true
+  },
+  onShowMap: {
+    type: Function,
+    required: true
+  }
+})
+
+const formatDate = (timestamp) => {
+  return moment(timestamp).format('HH:mm - DD/MM/YYYY')
+}
+
+const fixPoints = (km) => {
+  return km.toFixed(2)
+}
+
+const convertMillsToMin = (milliseconds) => {
+  return (milliseconds / 60000).toFixed(1);
+}
+
+const openMap = (trip) => {
+  props.onShowMap(trip)
+}
+
+</script>
