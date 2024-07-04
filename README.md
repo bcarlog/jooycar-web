@@ -29,7 +29,7 @@ docker run -it -p 8080:8080 --rm --name jooycar-web jooycar-web
  * --rm: Elimina el contenedor automáticamente cuando se detiene.
  * --name jooycar-web: Asigna el nombre jooycar-web al contenedor.
 
-Ahora deberías poder acceder a tu aplicación web en http://localhost:8080.
+Ahora deberías poder acceder a la aplicación web en http://localhost:8080.
 
 ## Ejecución local
 
